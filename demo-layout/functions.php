@@ -27,3 +27,16 @@ function register_my_menu() {
   register_nav_menu('header-menu',__( 'Header Menu' ));
 }
 add_action( 'init', 'register_my_menu' );
+
+add_action( 'widgets_init', 'demo_layout_widgets_init' );
+function demo_layout_widgets_init() {
+    register_sidebar( array(
+        'name' => __( 'Right Sidebar', 'demo_layout' ),
+        'id' => 'sidebar-1',
+        'description' => __( 'Widgets in this area will be shown on all posts and pages.', 'theme-slug' ),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</li>',
+	'before_title'  => '<h2 class="widgettitle">',
+	'after_title'   => '</h2>',
+    ) );
+}
